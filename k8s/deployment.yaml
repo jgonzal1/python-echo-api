@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-api
+  namespace: patrick
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: echo-api
+          image: gcr.io/native-api-dev/echo-api
+          ports:
+            - containerPort: 5000
